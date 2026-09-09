@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,34 +95,40 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .brand:hover .mono{transform:rotate(-8deg);background:var(--blue-soft)}
 .brand small{display:block;font-family:var(--font-mono);font-weight:400;font-size:.6rem;
   letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:2px}
+.nav-actions{display:flex;align-items:center;gap:14px}
 .nav-links{display:flex;gap:6px;align-items:center}
 .nav-links a{font-size:.86rem;color:var(--ink-2);padding:8px 14px;border-radius:999px;
   position:relative;transition:color .3s,background .3s}
 .nav-links a .idx{font-family:var(--font-mono);font-size:.66rem;color:var(--coral);opacity:.85;margin-right:5px}
 .nav-links a:hover,.nav-links a.active{color:var(--ink)}
 .nav-links a.active{background:var(--blue-soft)}
+.lang-toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface);flex-shrink:0}
+.lang-toggle button{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.04em;padding:7px 11px;border:0;
+  background:transparent;color:var(--muted);cursor:pointer;line-height:1;transition:background .3s,color .3s}
+.lang-toggle button.on{background:var(--coral);color:#fff}
+.lang-toggle button:not(.on):hover{color:var(--ink)}
 .nav-toggle{display:none;background:rgba(255,255,255,.6);border:1px solid var(--line);color:var(--ink);
   width:44px;height:40px;border-radius:10px;cursor:pointer;font-size:1.1rem}
+:root[data-lang="en"] .branch-head .en{display:none}
 
 /* ============ HERO ============ */
 .hero{min-height:100svh;display:flex;align-items:center;padding-top:96px;padding-bottom:60px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;z-index:0;
-  background:url("assets/bg-desk.jpg") no-repeat center bottom;background-size:cover;
-  filter:saturate(.86) brightness(1.03)}
+  background:url("assets/bg-desk.jpg") no-repeat center bottom;background-size:100% auto;
+  filter:saturate(.92)}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,
-    rgba(233,234,230,.97) 0%,
-    rgba(233,234,230,.93) 30%,
-    rgba(233,234,230,.84) 52%,
-    rgba(233,234,230,.52) 66%,
-    rgba(233,234,230,.34) 78%,
-    rgba(233,234,230,.52) 88%,
-    rgba(233,234,230,.84) 95%,
+    rgba(233,234,230,.55) 0%,
+    rgba(233,234,230,.22) 28%,
+    rgba(233,234,230,.12) 50%,
+    rgba(233,234,230,.2) 74%,
+    rgba(233,234,230,.55) 92%,
     var(--bg) 100%),
-  linear-gradient(90deg, rgba(233,234,230,.7) 0%, rgba(233,234,230,.3) 34%, rgba(233,234,230,0) 58%);}
+  linear-gradient(90deg, var(--bg) 0%, rgba(233,234,230,0) 14%, rgba(233,234,230,0) 86%, var(--bg) 100%);}
 .hero>.wrap{position:relative;z-index:2}
 .hero-grid{display:block}
-.hero-copy{max-width:min(640px,100%)}
+.hero-copy{max-width:min(700px,100%);margin:0 auto;text-align:center}
+.hero-copy .eyebrow{justify-content:center}
 .hero-eyebrow{margin-bottom:26px}
 .hero h1{font-family:var(--font-serif);font-weight:600;line-height:1.02;letter-spacing:.02em;
   font-size:clamp(3.4rem,12vw,7rem);color:var(--ink)}
@@ -130,14 +136,11 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
   font-size:clamp(1.1rem,3vw,1.7rem);letter-spacing:.06em;color:var(--blue-strong);margin-top:.5em}
 .hero .role{margin-top:22px;font-family:var(--font-mono);font-size:.82rem;letter-spacing:.16em;
   color:var(--muted);text-transform:uppercase}
-.hero .tagline{font-family:var(--font-display);font-style:italic;font-weight:400;
-  font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.5;color:var(--ink);margin:30px 0 20px;
-  border-left:2px solid var(--coral);padding-left:22px}
-.hero .lede{color:var(--ink-2);max-width:44ch;font-size:1.02rem}
-.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.hero .lede{color:var(--ink-2);max-width:46ch;font-size:1.02rem;margin:26px auto 0}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;justify-content:center}
 .chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.05em;color:var(--blue-strong);
   border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:rgba(255,255,255,.72)}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;justify-content:center}
 .btn{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;padding:13px 24px;border-radius:999px;
   cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s,box-shadow .3s;
   display:inline-flex;align-items:center;gap:9px}
@@ -164,10 +167,21 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
   font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
   background:rgba(255,255,255,.72);backdrop-filter:blur(4px);padding:7px 16px;border-radius:999px;border:1px solid var(--line)}
 .scene-cap b{color:var(--coral);font-weight:500}
+@media(max-width:680px){.scene-band{height:auto;aspect-ratio:1672/941}}
+
+/* 專案卡片：問題 / 角色 / 成果 */
+.p-rows{display:flex;flex-direction:column;gap:9px;margin-top:6px;flex:1}
+.p-rows .row{display:flex;gap:10px;font-size:.86rem;line-height:1.5;color:var(--ink-2)}
+.p-rows .row .k{flex-shrink:0;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;
+  color:var(--coral);border:1px solid var(--coral-soft);background:var(--coral-soft);
+  border-radius:5px;padding:3px 7px;height:fit-content;margin-top:2px}
 
 /* ============ ABOUT ============ */
-.about-lead{font-family:var(--font-serif);font-size:clamp(1.15rem,2.3vw,1.5rem);line-height:1.85;
-  color:var(--ink);max-width:60ch;margin-bottom:48px;font-weight:500}
+.about-quote{font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.35rem,3vw,2rem);line-height:1.45;color:var(--ink);
+  border-left:3px solid var(--coral);padding-left:24px;margin-bottom:30px;max-width:56ch}
+.about-lead{font-family:var(--font-serif);font-size:clamp(1.1rem,2.2vw,1.42rem);line-height:1.85;
+  color:var(--ink-2);max-width:62ch;margin-bottom:48px;font-weight:400}
 .about-lead b{color:var(--coral);font-weight:600}
 .traits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .trait{border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:var(--surface);box-shadow:var(--shadow-sm);
@@ -235,6 +249,11 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .tl-tags span{font-family:var(--font-mono);font-size:.66rem;color:var(--blue-strong);padding:4px 10px;
   border:1px solid var(--line);border-radius:6px;background:var(--surface)}
 .tl-item.future h3{color:var(--blue-strong)}
+.tl-item.past{padding-bottom:28px}
+.tl-item.past h3{font-size:1.1rem;color:var(--ink-2)}
+.tl-item.past .org{margin-bottom:5px}
+.tl-item.past p{font-size:.9rem;color:var(--muted)}
+.tl-item.past::before{width:11px;height:11px;left:-32px;top:7px}
 
 /* ============ PROJECTS ============ */
 .proj-note{font-family:var(--font-mono);font-size:.76rem;color:var(--muted);margin-bottom:30px;
@@ -249,6 +268,9 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .card:hover::before{transform:scaleX(1)}
 .card .kase{font-family:var(--font-mono);font-size:.68rem;color:var(--coral);letter-spacing:.1em}
 .card h3{font-family:var(--font-serif);font-weight:600;font-size:1.25rem;color:var(--ink);margin:12px 0 8px}
+.card h3 a{color:inherit;display:inline-flex;align-items:center;gap:6px;transition:color .3s}
+.card h3 a:hover{color:var(--coral)}
+.card h3 a .ar{font-size:.78em;color:var(--coral)}
 .card p{font-size:.9rem;color:var(--ink-2);flex:1}
 .card .ptags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .card .ptags span{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);padding:3px 9px;
@@ -368,7 +390,6 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
   .branches::before{display:none}
   .branch::before,.branch::after{display:none}
   .trunk{height:24px}
-  .hero .tagline{font-size:1.15rem}
   .hero::after{background:linear-gradient(180deg,rgba(233,234,230,.95) 0%,rgba(233,234,230,.9) 40%,rgba(233,234,230,.55) 72%,rgba(233,234,230,.6) 100%)}
 }
 @media(prefers-reduced-motion:reduce){
@@ -389,15 +410,21 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
       <span class="mono">許</span>
       <span>Frank Hsu<small>Software Engineer</small></span>
     </a>
-    <nav class="nav-links" id="navlinks">
-      <a href="#about"><span class="idx">01</span>關於</a>
-      <a href="#skills"><span class="idx">02</span>技能</a>
-      <a href="#journey"><span class="idx">03</span>歷程</a>
-      <a href="#works"><span class="idx">04</span>專案</a>
-      <a href="#vibe"><span class="idx">05</span>Vibe</a>
-      <a href="#contact"><span class="idx">06</span>聯絡</a>
-    </nav>
-    <button class="nav-toggle" id="navtoggle" aria-label="選單">☰</button>
+    <div class="nav-actions">
+      <nav class="nav-links" id="navlinks">
+        <a href="#about"><span class="idx">01</span><span data-i18n="nav.about">關於</span></a>
+        <a href="#skills"><span class="idx">02</span><span data-i18n="nav.skills">技能</span></a>
+        <a href="#journey"><span class="idx">03</span><span data-i18n="nav.journey">歷程</span></a>
+        <a href="#works"><span class="idx">04</span><span data-i18n="nav.works">專案</span></a>
+        <a href="#vibe"><span class="idx">05</span>Vibe</a>
+        <a href="#contact"><span class="idx">06</span><span data-i18n="nav.contact">聯絡</span></a>
+      </nav>
+      <div class="lang-toggle" id="langtoggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="zh" class="on">中</button>
+        <button type="button" data-set-lang="en">EN</button>
+      </div>
+      <button class="nav-toggle" id="navtoggle" aria-label="選單">☰</button>
+    </div>
   </div>
 </header>
 
@@ -405,20 +432,19 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
 <section class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <div class="hero-eyebrow anim d1"><span class="eyebrow">Senior Software Engineer · 台北</span></div>
+      <div class="hero-eyebrow anim d1"><span class="eyebrow" data-i18n="hero.eyebrow">Senior Software Engineer · 台北</span></div>
       <h1 class="anim d2">許齊文<span class="en">Frank Hsu</span></h1>
-      <div class="role anim d3">資深軟體工程師 — .NET · 系統架構 · 分散式服務</div>
-      <p class="tagline anim d4">「先在腦海裡蓋好整座系統，<br>再行雲流水地把它實踐出來。」</p>
-      <p class="lede anim d5">十年來累積的軟體工程經驗，讓我對技術有著莫名的熱忱與執著。專注於後端與系統架構，此刻正朝著機器學習與區塊鏈的領域前進。</p>
-      <div class="hero-meta anim d6">
-        <span class="chip">8–9 年經驗</span>
-        <span class="chip">程式設計</span>
-        <span class="chip">微服務架構</span>
-        <span class="chip">自動化部署</span>
+      <div class="role anim d3" data-i18n="hero.role">資深軟體工程師 — 後端 · 系統架構 · 分散式服務</div>
+      <p class="lede anim d4" data-i18n="hero.lede">十年來累積的軟體工程經驗，讓我對技術有著莫名的熱忱與執著。專注於後端與系統架構，此刻正朝著機器學習與區塊鏈前進。</p>
+      <div class="hero-meta anim d5">
+        <span class="chip" data-i18n="hero.chip1">8–9 年經驗</span>
+        <span class="chip" data-i18n="hero.chip2">程式設計</span>
+        <span class="chip" data-i18n="hero.chip3">微服務架構</span>
+        <span class="chip" data-i18n="hero.chip4">自動化部署</span>
       </div>
       <div class="hero-cta anim d6">
-        <a href="#journey" class="btn primary">看看我的歷程 <span class="arrow">↗</span></a>
-        <a href="#contact" class="btn ghost">聯絡我</a>
+        <a href="#works" class="btn primary"><span data-i18n="hero.cta1">查看精選專案</span> <span class="arrow">↗</span></a>
+        <a href="#contact" class="btn ghost" data-i18n="hero.cta2">聯絡我</a>
       </div>
     </div>
   </div>
@@ -429,17 +455,18 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
 <section id="about">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">01 — 關於我 · About</span>
-      <h2 class="sec-title">一個把 <em>「想清楚」</em> 當成習慣的工程師</h2>
+      <span class="eyebrow" data-i18n="about.eyebrow">01 — 關於我 · About</span>
+      <h2 class="sec-title" data-i18n="about.title">一個把 <em>「想清楚」</em> 當成習慣的工程師</h2>
     </div>
-    <p class="about-lead reveal">我習慣在動手前，先在腦中構思出<b>整體架構與每一個細節</b>。前期或許稍慢，但一旦清晰，後續便能行雲流水地執行——這也讓我負責的專案幾乎都優於表定時程完成。這些年，我關注的重心，也從「把功能做完」轉向了系統的<b>可靠性、可擴充與可維護性</b>。</p>
+    <p class="about-quote reveal" data-i18n="about.quote">「先在腦海裡蓋好整座系統，再行雲流水地把它實踐出來。」</p>
+    <p class="about-lead reveal" data-i18n="about.lead">我習慣在動手前，先在腦中構思出<b>整體架構與每一個細節</b>。前期或許稍慢，但一旦清晰，後續便能行雲流水地執行——這也讓我負責的專案幾乎都優於表定時程完成。這些年，我關注的重心，也從「把功能做完」轉向了系統的<b>可靠性、可擴充與可維護性</b>。</p>
     <div class="traits stagger reveal">
-      <div class="trait"><div class="n">01</div><h3>自主學習</h3><p>會持續關注新技術，保持學習與研究的熱誠；並在過程中設想這些技術如何提升現有專案，或評估用於未來專案的可行性。</p></div>
-      <div class="trait"><div class="n">02</div><h3>獨立思考</h3><p>面對未知，先建立基礎知識、再拆解問題，找出屬於自己的解法。</p></div>
-      <div class="trait"><div class="n">03</div><h3>認真負責</h3><p>交付前力求優於規格、優於時程，對品質有自己的堅持。</p></div>
-      <div class="trait"><div class="n">04</div><h3>溝通良好</h3><p>與 PM、User 深談需求，挖掘潛在需求並確實落實於成品之中。</p></div>
-      <div class="trait"><div class="n">05</div><h3>熱心助人</h3><p>樂於分享與 Code Review，跨系統協作時常擔任溝通的窗口。</p></div>
-      <div class="trait"><div class="n">06</div><h3>團隊合作</h3><p>與夥伴並肩作戰，把一件件複雜的事情，一起做成。</p></div>
+      <div class="trait"><div class="n">01</div><h3 data-i18n="t1h">自主學習</h3><p data-i18n="t1p">會持續關注新技術，保持學習與研究的熱誠；並在過程中設想這些技術如何提升現有專案，或評估用於未來專案的可行性。</p></div>
+      <div class="trait"><div class="n">02</div><h3 data-i18n="t2h">獨立思考</h3><p data-i18n="t2p">面對未知，先建立基礎知識、再拆解問題，找出屬於自己的解法。</p></div>
+      <div class="trait"><div class="n">03</div><h3 data-i18n="t3h">認真負責</h3><p data-i18n="t3p">交付前力求優於規格、優於時程，對品質有自己的堅持。</p></div>
+      <div class="trait"><div class="n">04</div><h3 data-i18n="t4h">溝通良好</h3><p data-i18n="t4p">與 PM、User 深談需求，挖掘潛在需求並確實落實於成品之中。</p></div>
+      <div class="trait"><div class="n">05</div><h3 data-i18n="t5h">熱心助人</h3><p data-i18n="t5p">樂於分享與 Code Review，跨系統協作時常擔任溝通的窗口。</p></div>
+      <div class="trait"><div class="n">06</div><h3 data-i18n="t6h">團隊合作</h3><p data-i18n="t6p">與夥伴並肩作戰，把一件件複雜的事情，一起做成。</p></div>
     </div>
   </div>
 </section>
@@ -448,22 +475,22 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
 <section id="skills">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">02 — 技能樹 · Skills</span>
-      <h2 class="sec-title">從一顆核心，長成一整棵 <em>技術樹</em></h2>
+      <span class="eyebrow" data-i18n="skills.eyebrow">02 — 技能樹 · Skills</span>
+      <h2 class="sec-title" data-i18n="skills.title">從一顆核心，長成一整棵 <em>技術樹</em></h2>
     </div>
     <div class="tree">
-      <div class="tree-root reveal"><div class="node">軟體工程<small>Software Engineering</small></div></div>
+      <div class="tree-root reveal"><div class="node" data-i18n="skills.root">軟體工程<small>Software Engineering</small></div></div>
       <div class="trunk reveal"></div>
       <div class="branches stagger reveal">
         <div class="branch">
-          <div class="branch-head"><h3>語言</h3><span class="en">Languages</span></div>
+          <div class="branch-head"><h3 data-i18n="sb1">語言</h3><span class="en">Languages</span></div>
           <div class="leaves">
             <span class="leaf core">C#</span><span class="leaf">Java</span><span class="leaf">Golang</span>
             <span class="leaf">Lua</span><span class="leaf">JavaScript</span><span class="leaf">SQL</span><span class="leaf">Regex</span>
           </div>
         </div>
         <div class="branch">
-          <div class="branch-head"><h3>框架</h3><span class="en">Frameworks</span></div>
+          <div class="branch-head"><h3 data-i18n="sb2">框架</h3><span class="en">Frameworks</span></div>
           <div class="leaves">
             <span class="leaf core">.NET</span><span class="leaf core">EF Core</span><span class="leaf core">ASP.NET</span>
             <span class="leaf">Spring Cloud</span><span class="leaf">Steeltoe</span><span class="leaf">Bot Framework</span>
@@ -471,21 +498,21 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
           </div>
         </div>
         <div class="branch">
-          <div class="branch-head"><h3>架構</h3><span class="en">Architecture</span></div>
+          <div class="branch-head"><h3 data-i18n="sb3">架構</h3><span class="en">Architecture</span></div>
           <div class="leaves">
             <span class="leaf core">DDD</span><span class="leaf core">CQRS</span><span class="leaf core">Mediator</span>
-            <span class="leaf">Actor Model</span><span class="leaf">微服務</span><span class="leaf">系統設計</span>
+            <span class="leaf">Actor Model</span><span class="leaf" data-i18n="sl.micro">微服務</span><span class="leaf" data-i18n="sl.sys">系統設計</span>
           </div>
         </div>
         <div class="branch">
-          <div class="branch-head"><h3>資料</h3><span class="en">Data</span></div>
+          <div class="branch-head"><h3 data-i18n="sb4">資料</h3><span class="en">Data</span></div>
           <div class="leaves">
             <span class="leaf core">PostgreSQL</span><span class="leaf core">MySQL</span><span class="leaf">MsSQL</span>
             <span class="leaf">MongoDB</span><span class="leaf">Redis</span>
           </div>
         </div>
         <div class="branch">
-          <div class="branch-head"><h3>訊息 / 維運</h3><span class="en">Infra</span></div>
+          <div class="branch-head"><h3 data-i18n="sb5">訊息 / 維運</h3><span class="en">Infra</span></div>
           <div class="leaves">
             <span class="leaf core">Docker</span><span class="leaf core">Nginx</span><span class="leaf core">GitLab CI/CD</span>
             <span class="leaf">Kafka</span><span class="leaf">RabbitMQ</span><span class="leaf">Traefik</span>
@@ -493,7 +520,7 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
           </div>
         </div>
         <div class="branch sprout">
-          <div class="branch-head"><h3>探索中</h3><span class="en">Exploring</span></div>
+          <div class="branch-head"><h3 data-i18n="sb6">探索中</h3><span class="en">Exploring</span></div>
           <div class="leaves">
             <span class="leaf">Machine Learning</span>
           </div>
@@ -507,63 +534,59 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
 <section id="journey">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">03 — 歷程 · Journey</span>
-      <h2 class="sec-title">從物理與光電，走到 <em>軟體與架構</em></h2>
+      <span class="eyebrow" data-i18n="journey.eyebrow">03 — 歷程 · Journey</span>
+      <h2 class="sec-title" data-i18n="journey.title">從物理與光電，走到 <em>軟體與架構</em></h2>
     </div>
     <div class="timeline">
-      <div class="tl-item reveal">
+      <div class="tl-item past reveal">
         <div class="tl-date">2006 — 2010</div>
-        <h3>物理學系 · 學士</h3>
-        <div class="org">私立輔仁大學 · <b>Physics</b></div>
-        <p>在多元的課程裡徹底釋放求知慾，養成了泡圖書館、自修工具書的習慣——這份自學的底子，日後受用無窮。</p>
+        <h3 data-i18n="j1h">物理學系 · 學士</h3>
+        <div class="org" data-i18n="j1org">私立輔仁大學 · <b>Physics</b></div>
+        <p data-i18n="j1p">物理系出身，在圖書館與工具書間養成自學與獨立解決問題的底子。</p>
       </div>
-      <div class="tl-item reveal">
+      <div class="tl-item past reveal">
         <div class="tl-date">2010 — 2012</div>
-        <h3>光電工程研究所 · 碩士</h3>
-        <div class="org">國立臺灣師範大學 · <b>Optoelectronics</b></div>
-        <p>投入生醫光電研究，曾同時掌握 5 個計畫並如期完成。嚴格的教授訓練出我有系統的表達與獨立解決問題的能力。</p>
-        <div class="tl-tags"><span>核磁共振造影</span><span>影像分析</span><span>專案管理</span></div>
+        <h3 data-i18n="j2h">光電工程研究所 · 碩士</h3>
+        <div class="org" data-i18n="j2org">國立臺灣師範大學 · <b>Optoelectronics</b></div>
+        <p data-i18n="j2p">光電工程碩士，投入生醫光電研究，曾同時掌握 5 個計畫並如期完成。</p>
       </div>
-      <div class="tl-item reveal">
+      <div class="tl-item past reveal">
         <div class="tl-date">2013 — 2017</div>
-        <h3>工程師 · 系統整合</h3>
-        <div class="org">神通資訊科技 · <b>系統整合服務</b></div>
-        <p>負責門禁、CCTV、停車場與人員定位等系統整合，主導四億級機房專案的機電系統，並取得國際 Tier III 認證。也在此時愛上程式，下班自學 C#，踏上軟體工程之路。</p>
-        <div class="tl-tags"><span>專案管理</span><span>POC</span><span>C# 自學起點</span></div>
+        <h3 data-i18n="j3h">工程師 · 系統整合</h3>
+        <div class="org" data-i18n="j3org">神通資訊科技 · <b>系統整合服務</b></div>
+        <p data-i18n="j3p">主導四億級機房的機電系統整合並取得國際 Tier III 認證；也在此時下班自學 C#，踏上軟體工程之路。</p>
       </div>
-      <div class="tl-item reveal">
+      <div class="tl-item past reveal">
         <div class="tl-date">2017 — 2018</div>
-        <h3>系統開發工程師</h3>
-        <div class="org">天絡系統科技 · <b>軟體服務</b></div>
-        <p>從需求整合、系統與資料結構設計，到線上教學平台的客服、購物與訂課系統開發與整合測試，正式踏入軟體工程師的角色。</p>
-        <div class="tl-tags"><span>系統設計</span><span>整合測試</span></div>
+        <h3 data-i18n="j4h">系統開發工程師</h3>
+        <div class="org" data-i18n="j4org">天絡系統科技 · <b>軟體服務</b></div>
+        <p data-i18n="j4p">打造線上教學平台的客服、購物與訂課系統，正式踏入軟體工程師的角色。</p>
       </div>
-      <div class="tl-item reveal">
+      <div class="tl-item past reveal">
         <div class="tl-date">2018 — 2019</div>
-        <h3>軟體工程師</h3>
-        <div class="org">王道商業銀行 · <b>Banking</b></div>
-        <p>開發與維運行內專案管理系統、印鑑系統與後台管理，並負責與 User 單位進行需求訪談、系統規劃與時程評估。</p>
-        <div class="tl-tags"><span>金融系統</span><span>需求訪談</span></div>
+        <h3 data-i18n="j5h">軟體工程師</h3>
+        <div class="org" data-i18n="j5org">王道商業銀行 · <b>Banking</b></div>
+        <p data-i18n="j5p">開發與維運行內專案管理、印鑑系統，並負責需求訪談與系統規劃。</p>
       </div>
       <div class="tl-item reveal">
         <div class="tl-date">2019 — 2021</div>
-        <h3>資深工程師</h3>
-        <div class="org">思華科技 · <b>帶領 4 人以下團隊</b></div>
-        <p>以 Mediator + CQRS + DDD 打造服務，建立 GitLab CI/CD 與 ELK 觀測體系。關注點自此從「把程式寫完」，轉向系統的可靠性、可擴充與可維護性。</p>
-        <div class="tl-tags"><span>代理服務</span><span>機器人偵測</span><span>推廣系統</span><span>轉檔系統</span></div>
+        <h3 data-i18n="j6h">資深工程師</h3>
+        <div class="org" data-i18n="j6org">思華科技 · <b>帶領 4 人以下團隊</b></div>
+        <p data-i18n="j6p">以 Mediator + CQRS + DDD 打造服務，建立 GitLab CI/CD 與 ELK 觀測體系。關注點自此從「把程式寫完」，轉向系統的可靠性、可擴充與可維護性。</p>
+        <div class="tl-tags"><span data-i18n="j6t1">代理服務</span><span data-i18n="j6t2">機器人偵測</span><span data-i18n="j6t3">推廣系統</span><span data-i18n="j6t4">轉檔系統</span></div>
       </div>
       <div class="tl-item now reveal">
-        <div class="tl-date">2022 — 至今 <span class="tag">現在</span></div>
-        <h3>資深工程師</h3>
-        <div class="org">堯晉科技 · <b>系統架構 / 後端研發</b></div>
-        <p>負責系統與資料結構設計、應用與微服務開發、底層組件、Code Review 與半自動化／壓力測試，並建置 CI/CD；同時導入自動化整合與聊天機器人的相關應用。持續提供優於規格的解決方案。</p>
-        <div class="tl-tags"><span>音響購物專案</span><span>金流系統</span><span>Line 整合專案</span><span>跨服務整合專案</span><span>UiPath 自動化</span><span>聊天機器人</span></div>
+        <div class="tl-date">2022 — <span data-i18n="j.present">至今</span> <span class="tag" data-i18n="j.now">現在</span></div>
+        <h3 data-i18n="j7h">資深工程師</h3>
+        <div class="org" data-i18n="j7org">堯晉科技 · <b>系統架構 / 後端研發</b></div>
+        <p data-i18n="j7p">負責系統與資料結構設計、應用與微服務開發、底層組件、Code Review 與半自動化／壓力測試，並建置 CI/CD；同時導入自動化整合與聊天機器人的相關應用。持續提供優於規格的解決方案。</p>
+        <div class="tl-tags"><span data-i18n="j7t1">音響購物專案</span><span data-i18n="j7t2">金流系統</span><span data-i18n="j7t3">Line 整合專案</span><span data-i18n="j7t4">跨服務整合專案</span><span data-i18n="j7t5">UiPath 自動化</span><span data-i18n="j7t6">聊天機器人</span></div>
       </div>
       <div class="tl-item future reveal">
-        <div class="tl-date"><span class="tag soft">下一步</span></div>
-        <h3>機器學習</h3>
-        <div class="org">朝著下一個里程碑前進</div>
-        <p>希望透過機器學習的技術與應用，創造更好的服務——這是我正在往上長的新枝枒。</p>
+        <div class="tl-date"><span class="tag soft" data-i18n="j.next">下一步</span></div>
+        <h3 data-i18n="j8h">機器學習</h3>
+        <div class="org" data-i18n="j8org">朝著下一個里程碑前進</div>
+        <p data-i18n="j8p">希望透過機器學習的技術與應用，創造更好的服務——這是我正在往上長的新枝枒。</p>
       </div>
     </div>
   </div>
@@ -575,48 +598,68 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
     <div class="carousel">
       <div class="c-head">
         <div class="sec-head reveal">
-          <span class="eyebrow">04 — 專案 · Works</span>
-          <h2 class="sec-title">過往 <em>專案</em></h2>
+          <span class="eyebrow" data-i18n="works.eyebrow">04 — 專案 · Works</span>
+          <h2 class="sec-title" data-i18n="works.title">過往 <em>專案</em></h2>
         </div>
         <div class="c-nav reveal">
           <button class="c-btn prev" type="button" aria-label="上一個">‹</button>
           <button class="c-btn next" type="button" aria-label="下一個">›</button>
         </div>
       </div>
-      <div class="proj-note reveal">◇ 先留好版位，內容後續補上；可用右上箭頭左右翻頁</div>
-      <!-- 之後要新增專案，直接複製一個 .card 區塊、換掉文字即可 -->
+      <div class="proj-note reveal" data-i18n="works.note">◇ 這些年主導與參與的系統與產品——從售票、連署到資料與金流</div>
       <div class="carousel-track stagger reveal">
       <article class="card">
-        <div class="kase">CASE 01 · 2020</div>
-        <h3>推廣服務平台</h3>
-        <p>一套佣金計算與統計的推廣平台，涵蓋廣告系統、推廣人員管理、推廣統計，以及佣金計算與提現。</p>
-        <div class="ptags"><span>.NET</span><span>統計</span><span>金流</span></div>
+        <div class="kase">CASE 01 · 2024</div>
+        <h3><a href="https://skyline.film/home" target="_blank" rel="noopener"><span data-i18n="w1h">Skyline 電影購票平台</span><span class="ar">↗</span></a></h3>
+        <div class="p-rows">
+          <div class="row" data-i18n="w1r1"><span class="k">問題</span>缺乏一套自主、可控的線上購票系統。</div>
+          <div class="row" data-i18n="w1r2"><span class="k">角色</span>Domain 設計、程式開發、部署維運。</div>
+          <div class="row" data-i18n="w1r3"><span class="k">成果</span>上線後累積 20,000+ 會員使用。</div>
+        </div>
+        <div class="ptags"><span>DDD</span><span data-i18n="w1g1">售票平台</span><span data-i18n="w1g2">部署維運</span></div>
       </article>
       <article class="card">
-        <div class="kase">CASE 02 · 2020</div>
-        <h3>資料蒐集與分析系統</h3>
-        <p>透過 Nginx mirror 蒐集 request 並儲存至 Elasticsearch，串接方可用 API 帶入 ES query 查詢所需資訊。</p>
+        <div class="kase">CASE 02 · 2023</div>
+        <h3 data-i18n="w2h">郭辦連署自動化</h3>
+        <div class="p-rows">
+          <div class="row" data-i18n="w2r1"><span class="k">問題</span>傳統連署方式過於消耗人力與物力。</div>
+          <div class="row" data-i18n="w2r2"><span class="k">角色</span>流程設計、程式開發、部署維運。</div>
+          <div class="row" data-i18n="w2r3"><span class="k">成果</span>整合 LINE 線上連署與實體連署，累計突破百萬份。</div>
+        </div>
+        <div class="ptags"><span data-i18n="w2g1">流程自動化</span><span data-i18n="w2g2">LINE 整合</span><span data-i18n="w2g3">連署系統</span></div>
+      </article>
+      <article class="card">
+        <div class="kase">CASE 03 · 2020</div>
+        <h3 data-i18n="w3h">推廣服務平台</h3>
+        <div class="p-rows">
+          <div class="row" data-i18n="w3r1"><span class="k">問題</span>缺一套整合廣告、推廣人員與佣金結算的平台。</div>
+          <div class="row" data-i18n="w3r2"><span class="k">角色</span>負責後端系統與資料結構設計、開發。</div>
+          <div class="row" data-i18n="w3r3"><span class="k">成果</span>涵蓋推廣統計、佣金計算到提現的完整流程。</div>
+        </div>
+        <div class="ptags"><span>.NET</span><span data-i18n="w3g1">統計</span><span data-i18n="w3g2">金流</span></div>
+      </article>
+      <article class="card">
+        <div class="kase">CASE 04 · 2020</div>
+        <h3 data-i18n="w4h">資料蒐集與分析系統</h3>
+        <div class="p-rows">
+          <div class="row" data-i18n="w4r1"><span class="k">問題</span>多個服務需要蒐集並查詢大量 request 資料。</div>
+          <div class="row" data-i18n="w4r2"><span class="k">角色</span>以 Nginx mirror 蒐集、Elasticsearch 儲存並開放 API。</div>
+          <div class="row" data-i18n="w4r3"><span class="k">成果</span>串接方可用 ES query 即時取得所需資訊。</div>
+        </div>
         <div class="ptags"><span>Nginx</span><span>Elasticsearch</span><span>API</span></div>
       </article>
       <article class="card">
-        <div class="kase">CASE 03 · 2021</div>
-        <h3>縮網址系統</h3>
-        <p>類似 PTT／Google 的縮網址服務，提供縮網址、轉址，以及點擊率與曝光率的統計。</p>
-        <div class="ptags"><span>轉址</span><span>統計</span></div>
+        <div class="kase">CASE 05 · 2021</div>
+        <h3 data-i18n="w5h">縮網址系統</h3>
+        <div class="p-rows">
+          <div class="row" data-i18n="w5r1"><span class="k">問題</span>需要可追蹤成效的短網址服務。</div>
+          <div class="row" data-i18n="w5r2"><span class="k">角色</span>實作縮網址、轉址與統計模組。</div>
+          <div class="row" data-i18n="w5r3"><span class="k">成果</span>提供點擊率與曝光率的即時統計。</div>
+        </div>
+        <div class="ptags"><span data-i18n="w5g1">轉址</span><span data-i18n="w5g2">統計</span></div>
       </article>
       <article class="card placeholder">
         <div class="plus">+</div>
-        <div class="ph-t">待補充專案</div>
-        <div class="ph-s">Coming soon</div>
-      </article>
-      <article class="card placeholder">
-        <div class="plus">+</div>
-        <div class="ph-t">待補充專案</div>
-        <div class="ph-s">Coming soon</div>
-      </article>
-      <article class="card placeholder">
-        <div class="plus">+</div>
-        <div class="ph-t">待補充專案</div>
         <div class="ph-s">Coming soon</div>
       </article>
       </div>
@@ -630,26 +673,26 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
     <div class="carousel">
       <div class="c-head">
         <div class="sec-head reveal">
-          <span class="eyebrow">05 — Vibe Coding · 手感開發</span>
-          <h2 class="sec-title">憑著手感，和 AI 一起 <em>玩出來的</em> 小專案</h2>
+          <span class="eyebrow" data-i18n="vibe.eyebrow">05 — Vibe Coding · 手感開發</span>
+          <h2 class="sec-title" data-i18n="vibe.title">憑著手感，和 AI 一起 <em>玩出來的</em> 小專案</h2>
         </div>
         <div class="c-nav reveal">
           <button class="c-btn prev" type="button" aria-label="上一個">‹</button>
           <button class="c-btn next" type="button" aria-label="下一個">›</button>
         </div>
       </div>
-      <div class="proj-note reveal">◇ 工作之餘，用 vibe coding 快速打造、且實際上線運行的作品</div>
+      <div class="proj-note reveal" data-i18n="vibe.note">◇ 工作之餘，用 vibe coding 快速打造、且實際上線運行的作品</div>
       <div class="carousel-track stagger reveal">
       <article class="vibe-card">
         <div class="vibe-top"><span class="dots"><i></i><i></i><i></i></span><span class="url">math-vacabulary.cafaemon.com</span><span class="live">LIVE</span></div>
         <div class="vibe-body">
           <div class="kase">VIBE 01</div>
-          <h3>英文單字測驗</h3>
-          <p>英文單字的自我測驗工具，可自訂單字範圍（1–160）、題型與題數，作答後支援一鍵對答案與即時計分。</p>
-          <div class="vibe-tags"><span>英文單字</span><span>測驗</span><span>純前端</span></div>
+          <h3 data-i18n="v1h">英文單字測驗</h3>
+          <p data-i18n="v1p">英文單字的自我測驗工具，可自訂單字範圍（1–160）、題型與題數，作答後支援一鍵對答案與即時計分。</p>
+          <div class="vibe-tags"><span data-i18n="v1t1">英文單字</span><span data-i18n="v1t2">測驗</span><span data-i18n="v1t3">純前端</span></div>
           <div class="vibe-links">
-            <a class="go" href="https://math-vacabulary.cafaemon.com/" target="_blank" rel="noopener">開啟網站 ↗</a>
-            <a class="code" href="https://github.com/frank90086/math_vacabulary" target="_blank" rel="noopener">原始碼</a>
+            <a class="go" href="https://math-vacabulary.cafaemon.com/" target="_blank" rel="noopener" data-i18n="vibe.open">開啟網站 ↗</a>
+            <a class="code" href="https://github.com/frank90086/math_vacabulary" target="_blank" rel="noopener" data-i18n="vibe.source">原始碼</a>
           </div>
         </div>
       </article>
@@ -657,12 +700,12 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
         <div class="vibe-top"><span class="dots"><i></i><i></i><i></i></span><span class="url">math.cafaemon.com</span><span class="live">LIVE</span></div>
         <div class="vibe-body">
           <div class="kase">VIBE 02</div>
-          <h3>國中數學脈絡</h3>
-          <p>互動式數學學習網站，把國中數學的知識脈絡串成一條線，並延伸到三角函數與線性代數，邊操作邊建立直覺。</p>
-          <div class="vibe-tags"><span>互動教學</span><span>數學視覺化</span><span>JavaScript</span></div>
+          <h3 data-i18n="v2h">國中數學脈絡</h3>
+          <p data-i18n="v2p">互動式數學學習網站，把國中數學的知識脈絡串成一條線，並延伸到三角函數與線性代數，邊操作邊建立直覺。</p>
+          <div class="vibe-tags"><span data-i18n="v2t1">互動教學</span><span data-i18n="v2t2">數學視覺化</span><span>JavaScript</span></div>
           <div class="vibe-links">
-            <a class="go" href="https://math.cafaemon.com/" target="_blank" rel="noopener">開啟網站 ↗</a>
-            <a class="code" href="https://github.com/frank90086/math-tutorial" target="_blank" rel="noopener">原始碼</a>
+            <a class="go" href="https://math.cafaemon.com/" target="_blank" rel="noopener" data-i18n="vibe.open">開啟網站 ↗</a>
+            <a class="code" href="https://github.com/frank90086/math-tutorial" target="_blank" rel="noopener" data-i18n="vibe.source">原始碼</a>
           </div>
         </div>
       </article>
@@ -670,12 +713,12 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
         <div class="vibe-top"><span class="dots"><i></i><i></i><i></i></span><span class="url">stock.cafaemon.com</span><span class="live">LIVE</span></div>
         <div class="vibe-body">
           <div class="kase">VIBE 03</div>
-          <h3>個股走勢分析</h3>
-          <p>台灣股票技術分析工具，即時從證交所抓取資料，繪製 K 線並計算 ATR、KD、MACD 等技術指標。</p>
-          <div class="vibe-tags"><span>台股</span><span>技術分析</span><span>K線 / 指標</span></div>
+          <h3 data-i18n="v3h">個股走勢分析</h3>
+          <p data-i18n="v3p">台灣股票技術分析工具，即時從證交所抓取資料，繪製 K 線並計算 ATR、KD、MACD 等技術指標。</p>
+          <div class="vibe-tags"><span data-i18n="v3t1">台股</span><span data-i18n="v3t2">技術分析</span><span data-i18n="v3t3">K線 / 指標</span></div>
           <div class="vibe-links">
-            <a class="go" href="https://stock.cafaemon.com/" target="_blank" rel="noopener">開啟網站 ↗</a>
-            <a class="code" href="https://github.com/frank90086/stock_finance" target="_blank" rel="noopener">原始碼</a>
+            <a class="go" href="https://stock.cafaemon.com/" target="_blank" rel="noopener" data-i18n="vibe.open">開啟網站 ↗</a>
+            <a class="code" href="https://github.com/frank90086/stock_finance" target="_blank" rel="noopener" data-i18n="vibe.source">原始碼</a>
           </div>
         </div>
       </article>
@@ -686,17 +729,17 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
 
 <!-- ===== SCENE BAND：登山 × 單板滑雪 ===== -->
 <div class="scene-band" role="img" aria-label="登山與單板滑雪水彩插畫">
-  <span class="scene-cap">工作以外 · <b>山與雪</b></span>
+  <span class="scene-cap" data-i18n="scene.cap">工作以外 · <b>山與雪</b></span>
 </div>
 
 <!-- ===== CONTACT ===== -->
 <section id="contact" class="contact">
   <div class="wrap">
     <div class="sec-head reveal" style="margin-inline:auto;text-align:center">
-      <span class="eyebrow" style="justify-content:center">06 — 聯絡 · Contact</span>
-      <h2 class="sec-title">有機會，<em>聊聊？</em></h2>
+      <span class="eyebrow" style="justify-content:center" data-i18n="contact.eyebrow">06 — 聯絡 · Contact</span>
+      <h2 class="sec-title" data-i18n="contact.title">有機會，<em>聊聊？</em></h2>
     </div>
-    <p class="contact-lead reveal">如果你正在尋找一位會把系統想清楚、也把事情做到位的工程師，歡迎與我聯繫。</p>
+    <p class="contact-lead reveal" data-i18n="contact.lead">如果你正在尋找一位會把系統想清楚、也把事情做到位的工程師，歡迎與我聯繫。</p>
     <div class="contact-links reveal stagger">
       <a class="clink" href="mailto:frank90086@hotmail.com">
         <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.5l8 5.5 8-5.5"/></svg></span>
@@ -712,11 +755,11 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
       </a>
       <a class="clink" href="https://line.me/ti/p/RVJGHacyH4" target="_blank" rel="noopener">
         <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12.5" rx="6"/><path d="M8.5 16.6l-1.2 3.2 4.3-3.1"/></svg></span>
-        <span><small>LINE</small><b>加入好友</b></span>
+        <span><small>LINE</small><b data-i18n="contact.line">加入好友</b></span>
       </a>
       <div class="clink" style="cursor:default">
         <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s6.4-5.7 6.4-11a6.4 6.4 0 10-12.8 0c0 5.3 6.4 11 6.4 11z"/><circle cx="12" cy="9.6" r="2.4"/></svg></span>
-        <span><small>Location</small><b>台北市 · Taipei</b></span>
+        <span><small>Location</small><b data-i18n="contact.loc">台北市 · Taipei</b></span>
       </div>
     </div>
     <footer>
@@ -729,6 +772,111 @@ footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);paddin
 </section>
 
 <script>
+/* ============ i18n（中／英切換）============ */
+const EN = {
+  "nav.about":`About`,"nav.skills":`Skills`,"nav.journey":`Journey`,"nav.works":`Works`,"nav.contact":`Contact`,
+  "hero.eyebrow":`Senior Software Engineer · Taipei`,
+  "hero.role":`Senior Software Engineer — Backend · System Architecture · Distributed Services`,
+  "hero.lede":`A decade in software engineering has grown into a real obsession with the craft. I focus on backend systems and architecture — and I'm now heading toward machine learning and blockchain.`,
+  "hero.chip1":`8–9 Years`,"hero.chip2":`Programming`,"hero.chip3":`Microservices`,"hero.chip4":`CI/CD`,
+  "hero.cta1":`View Projects`,"hero.cta2":`Get in Touch`,
+  "about.eyebrow":`01 — About`,
+  "about.title":`An engineer who makes <em>“thinking it through”</em> a habit`,
+  "about.quote":`“First build the whole system in my head — then bring it to life, effortlessly.”`,
+  "about.lead":`Before I write a line of code, I lay out the <b>whole architecture and every detail</b> in my head. It can be slow up front, but once it's clear the work just flows — which is why the projects I own almost always ship ahead of schedule. Over the years my focus has shifted from “getting features done” to a system's <b>reliability, scalability and maintainability</b>.`,
+  "t1h":`Self-Learning`,"t1p":`I keep an eye on new tech and stay eager to learn — always imagining how it could lift a current project or make a future one possible.`,
+  "t2h":`Independent Thinking`,"t2p":`Facing the unknown, I build up the fundamentals first, then break the problem down to find my own solution.`,
+  "t3h":`Accountability`,"t3p":`Before delivering, I push to beat both the spec and the schedule — I hold my own bar for quality.`,
+  "t4h":`Communication`,"t4p":`I talk requirements through with PMs and users, surfacing the hidden needs and building them into the result.`,
+  "t5h":`Helpfulness`,"t5p":`Happy to share and to review code; often the point of contact when systems need to work together.`,
+  "t6h":`Teamwork`,"t6p":`Shoulder to shoulder with teammates, getting complicated things done — together.`,
+  "skills.eyebrow":`02 — Skills`,
+  "skills.title":`From a single core into a whole <em>tech tree</em>`,
+  "skills.root":`Software Engineering`,
+  "sb1":`Languages`,"sb2":`Frameworks`,"sb3":`Architecture`,"sb4":`Data`,"sb5":`Infra`,"sb6":`Exploring`,
+  "sl.micro":`Microservices`,"sl.sys":`System Design`,
+  "journey.eyebrow":`03 — Journey`,
+  "journey.title":`From physics & optics to <em>software & architecture</em>`,
+  "j1h":`B.S. in Physics`,"j1org":`Fu Jen Catholic University · <b>Physics</b>`,
+  "j1p":`A physics background where — between the library and reference books — I built the habit of teaching myself and thinking problems through.`,
+  "j2h":`M.S. in Optoelectronics`,"j2org":`National Taiwan Normal University · <b>Optoelectronics</b>`,
+  "j2p":`A master's in optoelectronics doing biomedical-optics research; once ran five projects at once and delivered them all on time.`,
+  "j3h":`Engineer · Systems Integration`,"j3org":`MiTAC Information · <b>Systems Integration</b>`,
+  "j3p":`Led the electromechanical systems of an NT$400M+ data-center project to international Tier III certification — and taught myself C# after hours, setting me on the road to software.`,
+  "j4h":`Systems Development Engineer`,"j4org":`天絡系統科技 · <b>Software Services</b>`,
+  "j4p":`Built the support, shopping and course-booking systems for an online-learning platform — my first real step as a software engineer.`,
+  "j5h":`Software Engineer`,"j5org":`O-Bank · <b>Banking</b>`,
+  "j5p":`Developed and maintained the bank's internal project-management and seal systems, and ran requirement interviews and system planning.`,
+  "j6h":`Senior Engineer`,"j6org":`思華科技 · <b>Led a team of ≤4</b>`,
+  "j6p":`Built services with Mediator + CQRS + DDD and set up GitLab CI/CD and an ELK observability stack. My focus shifted from “finishing the code” to reliability, scalability and maintainability.`,
+  "j6t1":`Proxy Service`,"j6t2":`Bot Detection`,"j6t3":`Promotion System`,"j6t4":`File Conversion`,
+  "j7h":`Senior Engineer`,"j7org":`堯晉科技 · <b>System Architecture / Backend</b>`,
+  "j7p":`System and data-structure design, application and microservice development, low-level components, code review and semi-automated / load testing, plus CI/CD — while introducing automation and chatbot integrations. Always delivering beyond spec.`,
+  "j7t1":`Audio E-commerce`,"j7t2":`Payments`,"j7t3":`LINE Integration`,"j7t4":`Cross-service Integration`,"j7t5":`UiPath RPA`,"j7t6":`Chatbot`,
+  "j.present":`Present`,"j.now":`Now`,"j.next":`Next`,
+  "j8h":`Machine Learning`,"j8org":`Toward the next milestone`,
+  "j8p":`I want to build better services through machine learning — the new branch I'm growing toward.`,
+  "works.eyebrow":`04 — Works`,"works.title":`Selected <em>Works</em>`,
+  "works.note":`◇ Systems and products I've led or contributed to — from ticketing and petitions to data and payments`,
+  "w1h":`Skyline · Movie Ticketing`,
+  "w1r1":`<span class="k">Problem</span>No independent, self-controlled online ticketing system.`,
+  "w1r2":`<span class="k">Role</span>Domain design, development, deployment & ops.`,
+  "w1r3":`<span class="k">Result</span>20,000+ members using it since launch.`,
+  "w1g1":`Ticketing`,"w1g2":`DevOps`,
+  "w2h":`Kuo's Office · Petition Automation`,
+  "w2r1":`<span class="k">Problem</span>Traditional petitioning burned through people and resources.`,
+  "w2r2":`<span class="k">Role</span>Process design, development, deployment & ops.`,
+  "w2r3":`<span class="k">Result</span>Integrated LINE online petitions with on-site signatures — over one million collected.`,
+  "w2g1":`Automation`,"w2g2":`LINE`,"w2g3":`Petition`,
+  "w3h":`Promotion Platform`,
+  "w3r1":`<span class="k">Problem</span>No single platform tying ads, promoters and commission settlement together.`,
+  "w3r2":`<span class="k">Role</span>Owned the backend system and data-structure design & development.`,
+  "w3r3":`<span class="k">Result</span>Covered promotion analytics, commission calculation and payout end to end.`,
+  "w3g1":`Analytics`,"w3g2":`Payments`,
+  "w4h":`Data Collection & Analytics`,
+  "w4r1":`<span class="k">Problem</span>Several services needed to collect and query large volumes of requests.`,
+  "w4r2":`<span class="k">Role</span>Mirrored requests via Nginx, stored them in Elasticsearch, exposed an API.`,
+  "w4r3":`<span class="k">Result</span>Consumers fetch exactly what they need with an ES query.`,
+  "w5h":`URL Shortener`,
+  "w5r1":`<span class="k">Problem</span>Needed a short-link service that could track performance.`,
+  "w5r2":`<span class="k">Role</span>Built the shortening, redirect and analytics modules.`,
+  "w5r3":`<span class="k">Result</span>Real-time click-through and impression stats.`,
+  "w5g1":`Redirect`,"w5g2":`Analytics`,
+  "vibe.eyebrow":`05 — Vibe Coding`,
+  "vibe.title":`Small things I <em>vibe-coded</em> with AI`,
+  "vibe.note":`◇ Built fast on instinct in my spare time — and actually running in production`,
+  "v1h":`English Vocabulary Quiz`,
+  "v1p":`A self-testing tool for English vocabulary: choose the word range (1–160), question type and count, with one-tap answer checking and instant scoring.`,
+  "v1t1":`Vocabulary`,"v1t2":`Quiz`,"v1t3":`Front-end only`,
+  "v2h":`Junior-High Math Threads`,
+  "v2p":`An interactive site that strings junior-high math into one connected thread — reaching into trigonometry and linear algebra, learning by doing.`,
+  "v2t1":`Interactive`,"v2t2":`Math Viz`,
+  "v3h":`Stock Trend Analysis`,
+  "v3p":`A Taiwan-stock technical-analysis tool that pulls live data from the exchange and plots candlesticks with ATR, KD and MACD.`,
+  "v3t1":`TW Stocks`,"v3t2":`Technical Analysis`,"v3t3":`Candles / Indicators`,
+  "vibe.open":`Open site ↗`,"vibe.source":`Source`,
+  "scene.cap":`Off the clock · <b>Mountains & Snow</b>`,
+  "contact.eyebrow":`06 — Contact`,"contact.title":`Shall we <em>talk?</em>`,
+  "contact.lead":`If you're looking for an engineer who thinks the system through and gets things done, I'd love to hear from you.`,
+  "contact.line":`Add me`,"contact.loc":`Taipei, Taiwan`
+};
+const i18nEls=[...document.querySelectorAll('[data-i18n]')];
+i18nEls.forEach(el=>{el.dataset.zhHtml=el.innerHTML});
+function setLang(lang){
+  document.documentElement.setAttribute('data-lang',lang);
+  document.documentElement.lang = lang==='en' ? 'en' : 'zh-Hant';
+  i18nEls.forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(lang==='en'){ if(EN[k]!=null) el.innerHTML=EN[k]; }
+    else { el.innerHTML=el.dataset.zhHtml; }
+  });
+  document.querySelectorAll('#langtoggle button').forEach(b=>b.classList.toggle('on',b.dataset.setLang===lang));
+  try{localStorage.setItem('lang',lang)}catch(e){}
+}
+document.querySelectorAll('#langtoggle button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.setLang)));
+let _lang='zh'; try{_lang=localStorage.getItem('lang')||'zh'}catch(e){}
+setLang(_lang);
+
 /* nav scrolled state */
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
@@ -756,7 +904,7 @@ document.querySelectorAll('.carousel').forEach(car=>{
   const track=car.querySelector('.carousel-track');
   const prev=car.querySelector('.c-btn.prev');
   const next=car.querySelector('.c-btn.next');
-  const nav=car.querySelector('.c-nav');
+  const cnav=car.querySelector('.c-nav');
   if(!track||!prev||!next)return;
   const pageDist=()=>{
     const first=track.firstElementChild;
@@ -769,7 +917,7 @@ document.querySelectorAll('.carousel').forEach(car=>{
   };
   const update=()=>{
     const max=track.scrollWidth-track.clientWidth;
-    if(nav)nav.style.display=(max>4)?'flex':'none';
+    if(cnav)cnav.style.display=(max>4)?'flex':'none';
     prev.disabled=track.scrollLeft<=2;
     next.disabled=track.scrollLeft>=max-2;
   };
