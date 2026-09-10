@@ -77,7 +77,7 @@ section{position:relative;padding:clamp(72px,11vh,140px) 0;scroll-margin-top:80p
 
 .sec-head{margin-bottom:clamp(38px,6vw,64px);max-width:720px}
 .sec-title{font-family:var(--font-display);font-weight:600;color:var(--ink);
-  font-size:clamp(1.8rem,4.4vw,2.9rem);line-height:1.28;margin-top:.55em;letter-spacing:.01em}
+  font-size:clamp(1.8rem,4.4vw,2.9rem);line-height:1.28;margin-top:.55em;letter-spacing:.01em;word-break:keep-all}
 .sec-title em{font-family:var(--font-display);font-style:italic;color:var(--coral);font-weight:400;font-synthesis:none}
 
 /* ============ NAV ============ */
@@ -535,7 +535,7 @@ header.nav.scrolled{border-bottom:0;box-shadow:0 8px 20px -14px var(--nm-dark)}
         <button type="button" data-set-lang="zh" class="on">中</button>
         <button type="button" data-set-lang="en">EN</button>
       </div>
-      <button class="nav-toggle" id="navtoggle" aria-label="選單">☰</button>
+      <button class="nav-toggle" id="navtoggle" aria-label="選單" data-i18n-aria="aria.menu">☰</button>
     </div>
   </div>
 </header>
@@ -715,8 +715,8 @@ header.nav.scrolled{border-bottom:0;box-shadow:0 8px 20px -14px var(--nm-dark)}
           <h2 class="sec-title" data-i18n="works.title">過往 <em>專案</em></h2>
         </div>
         <div class="c-nav reveal">
-          <button class="c-btn prev" type="button" aria-label="上一個">‹</button>
-          <button class="c-btn next" type="button" aria-label="下一個">›</button>
+          <button class="c-btn prev" type="button" aria-label="上一個" data-i18n-aria="aria.prev">‹</button>
+          <button class="c-btn next" type="button" aria-label="下一個" data-i18n-aria="aria.next">›</button>
         </div>
       </div>
       <div class="proj-note reveal" data-i18n="works.note">◇ 這些年主導與參與的系統與產品——從售票、連署到資料與金流</div>
@@ -790,8 +790,8 @@ header.nav.scrolled{border-bottom:0;box-shadow:0 8px 20px -14px var(--nm-dark)}
           <h2 class="sec-title" data-i18n="vibe.title">憑著手感，和 AI 一起 <em>玩出來的</em> 小專案</h2>
         </div>
         <div class="c-nav reveal">
-          <button class="c-btn prev" type="button" aria-label="上一個">‹</button>
-          <button class="c-btn next" type="button" aria-label="下一個">›</button>
+          <button class="c-btn prev" type="button" aria-label="上一個" data-i18n-aria="aria.prev">‹</button>
+          <button class="c-btn next" type="button" aria-label="下一個" data-i18n-aria="aria.next">›</button>
         </div>
       </div>
       <div class="proj-note reveal" data-i18n="vibe.note">◇ 工作之餘，用 vibe coding 快速打造、且實際上線運行的作品</div>
@@ -841,7 +841,7 @@ header.nav.scrolled{border-bottom:0;box-shadow:0 8px 20px -14px var(--nm-dark)}
 </section>
 
 <!-- ===== SCENE BAND：登山 × 單板滑雪 ===== -->
-<div class="scene-band" role="img" aria-label="登山與單板滑雪水彩插畫">
+<div class="scene-band" role="img" aria-label="登山與單板滑雪水彩插畫" data-i18n-aria="aria.scene">
   <span class="scene-cap" data-i18n="scene.cap">工作以外 · <b>山與雪</b></span>
 </div>
 
@@ -857,7 +857,7 @@ header.nav.scrolled{border-bottom:0;box-shadow:0 8px 20px -14px var(--nm-dark)}
       <a class="clink" href="mailto:frank90086@hotmail.com">
         <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7.5l8 5.5 8-5.5"/></svg></span>
         <span><small>Email</small><b>frank90086@hotmail.com</b></span>
-        <span class="copy-btn" role="button" tabindex="0" aria-label="複製 Email" data-copy="frank90086@hotmail.com"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg></span>
+        <span class="copy-btn" role="button" tabindex="0" aria-label="複製 Email" data-i18n-aria="aria.copy" data-copy="frank90086@hotmail.com"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg></span>
         <span class="copy-toast" aria-hidden="true">已複製</span>
       </a>
       <a class="clink" href="https://github.com/frank90086" target="_blank" rel="noopener">
@@ -974,10 +974,13 @@ const EN = {
   "scene.cap":`Off the clock · <b>Mountains & Snow</b>`,
   "contact.eyebrow":`06 — Contact`,"contact.title":`Shall we <em>talk?</em>`,
   "contact.lead":`If you're looking for an engineer who thinks the system through and gets things done, I'd love to hear from you.`,
-  "contact.line":`Add me`,"contact.loc":`Taipei, Taiwan`
+  "contact.line":`Add me`,"contact.loc":`Taipei, Taiwan`,
+  "aria.prev":`Previous`,"aria.next":`Next`,"aria.menu":`Menu`,"aria.copy":`Copy email`,"aria.scene":`Watercolor of hiking and snowboarding`
 };
 const i18nEls=[...document.querySelectorAll('[data-i18n]')];
 i18nEls.forEach(el=>{el.dataset.zhHtml=el.innerHTML});
+const ariaEls=[...document.querySelectorAll('[data-i18n-aria]')];
+ariaEls.forEach(el=>{el.dataset.zhAria=el.getAttribute('aria-label')||''});
 function setLang(lang){
   document.documentElement.setAttribute('data-lang',lang);
   document.documentElement.lang = lang==='en' ? 'en' : 'zh-Hant';
@@ -985,6 +988,11 @@ function setLang(lang){
     const k=el.getAttribute('data-i18n');
     if(lang==='en'){ if(EN[k]!=null) el.innerHTML=EN[k]; }
     else { el.innerHTML=el.dataset.zhHtml; }
+  });
+  ariaEls.forEach(el=>{
+    const k=el.getAttribute('data-i18n-aria');
+    const v=lang==='en'?EN[k]:el.dataset.zhAria;
+    if(v!=null)el.setAttribute('aria-label',v);
   });
   document.querySelectorAll('#langtoggle button').forEach(b=>b.classList.toggle('on',b.dataset.setLang===lang));
   try{localStorage.setItem('lang',lang)}catch(e){}
