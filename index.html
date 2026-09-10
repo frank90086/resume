@@ -336,8 +336,8 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .contact .sec-title{margin-inline:auto}
 .contact-lead{color:var(--ink-2);max-width:48ch;margin:18px auto 40px}
 .contact-links{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;max-width:1080px;margin:0 auto}
-.clink{flex:1 1 300px;max-width:340px;min-width:0;display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:14px;
-  padding:18px 24px;text-align:left;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;
+.clink{flex:1 1 300px;max-width:340px;min-width:0;display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px;text-align:left;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;
   background:var(--surface);box-shadow:var(--shadow-sm)}
 .clink>span{min-width:0}
 .clink:hover{transform:translateY(-4px);border-color:var(--coral);box-shadow:var(--shadow)}
@@ -347,7 +347,7 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .clink:hover .ic{color:var(--coral);background:var(--coral-soft)}
 .clink small{display:block;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--muted)}
-.clink b{font-weight:500;color:var(--ink);font-size:.98rem;overflow-wrap:anywhere}
+.clink b{font-weight:500;color:var(--ink);font-size:.98rem;white-space:nowrap}
 footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--line);padding:34px 0 40px}
 .foot-inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
   font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;color:var(--muted)}
@@ -464,13 +464,14 @@ header.nav.scrolled{border-bottom:0;box-shadow:0 8px 20px -14px var(--nm-dark)}
 .nav-marker{position:absolute;bottom:0;left:0;width:0;height:2px;border-radius:2px;background:var(--coral);
   opacity:0;pointer-events:none;transition:left .35s var(--ease),width .35s var(--ease),opacity .3s}
 .nav-links a.active{background:transparent}
-/* 技能樹路徑亮起（hover / 鍵盤聚焦）*/
-.branch:hover::before,.branch:focus-visible::before{background:var(--blue)}
-.branch:hover::after,.branch:focus-visible::after{background:var(--blue);border:0;
-  transform:translateX(-50%) scale(1.3);box-shadow:0 0 0 4px var(--blue-soft),var(--nm-dot)}
-.branch.sprout:hover::before,.branch.sprout:focus-visible::before{background:var(--coral)}
-.branch.sprout:hover::after,.branch.sprout:focus-visible::after{background:var(--coral);
-  box-shadow:0 0 0 4px var(--coral-soft),var(--nm-dot)}
+/* 技能樹路徑亮起（core → 上排 → 下排）；下排不放圓點 */
+.branches .branch:nth-child(n+4)::after{display:none}
+.branch.lit::before{background:var(--blue)}
+.branch.lit::after{background:var(--blue);border:0;transform:translateX(-50%) scale(1.3);box-shadow:0 0 0 4px var(--blue-soft),var(--nm-dot)}
+.branch.sprout.lit::before{background:var(--coral)}
+.branch.sprout.lit::after{background:var(--coral);box-shadow:0 0 0 4px var(--coral-soft),var(--nm-dot)}
+.trunk.lit{background:var(--blue)}
+.branches.lit::before{background:linear-gradient(90deg,transparent,var(--blue) 12%,var(--blue) 88%,transparent)}
 .branch:focus-visible{outline:none;box-shadow:var(--nm-raised),0 0 0 2px var(--blue-soft)}
 .branch.sprout:focus-visible{box-shadow:var(--nm-raised),0 0 0 2px var(--coral-soft)}
 /* 專案卡片邊緣柔光 + 箭頭微移 */
@@ -487,7 +488,7 @@ header.nav.scrolled{border-bottom:0;box-shadow:0 8px 20px -14px var(--nm-dark)}
 .tl-item.reveal.in:not(.now):not(.future)::before{background:var(--blue);box-shadow:0 0 0 3px var(--blue-soft),var(--nm-dot)}
 /* Email 複製 */
 .clink{position:relative}
-.copy-btn{margin-left:auto;flex-shrink:0;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+.copy-btn{margin-left:auto;flex-shrink:0;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
   background:var(--bg);box-shadow:var(--nm-raised-xs);color:var(--muted);cursor:pointer;transition:color .3s,box-shadow .2s}
 .copy-btn:hover{color:var(--blue-strong)}
 .copy-btn:focus-visible{outline:none;box-shadow:var(--nm-raised-xs),0 0 0 2px var(--blue-soft)}
@@ -1002,8 +1003,25 @@ function onScrollProg(){const h=document.documentElement.scrollHeight-innerHeigh
 addEventListener('scroll',onScrollProg,{passive:true});onScrollProg();
 addEventListener('resize',()=>moveMarker(document.querySelector('.nav-links a.active')));
 
-/* 技能樹卡片可鍵盤聚焦 */
-document.querySelectorAll('.branch').forEach(b=>b.setAttribute('tabindex','0'));
+/* 技能樹：卡片可聚焦 + 路徑亮起（core → 同欄上排 → 下排）*/
+(()=>{
+  const branches=[...document.querySelectorAll('.branches .branch')];
+  const trunk=document.querySelector('.trunk');
+  const bar=document.querySelector('.branches');
+  const light=i=>{
+    const on=new Set([i]); if(i>=3)on.add(i-3);
+    branches.forEach((b,idx)=>b.classList.toggle('lit',on.has(idx)));
+    if(trunk)trunk.classList.add('lit'); if(bar)bar.classList.add('lit');
+  };
+  const clear=()=>{branches.forEach(b=>b.classList.remove('lit'));if(trunk)trunk.classList.remove('lit');if(bar)bar.classList.remove('lit');};
+  branches.forEach((b,i)=>{
+    b.setAttribute('tabindex','0');
+    b.addEventListener('mouseenter',()=>light(i));
+    b.addEventListener('mouseleave',clear);
+    b.addEventListener('focusin',()=>light(i));
+    b.addEventListener('focusout',clear);
+  });
+})();
 
 /* Email 複製回饋 */
 document.querySelectorAll('.copy-btn').forEach(btn=>{
