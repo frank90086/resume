@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 /* ============ TOKENS（日系清新 / light）============ */
@@ -34,8 +34,8 @@
 
   --font-display:'Fraunces','Noto Serif TC',serif;
   --font-serif:'Noto Serif TC','Fraunces',serif;
-  --font-body:'Noto Sans TC','Hanken Grotesk',sans-serif;
-  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --font-body:'Hanken Grotesk','Noto Sans TC',sans-serif;
+  --font-mono:'JetBrains Mono','Noto Sans TC',ui-monospace,monospace;
 
   --maxw:1120px;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -76,9 +76,9 @@ section{position:relative;padding:clamp(72px,11vh,140px) 0;scroll-margin-top:80p
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--coral);opacity:.7}
 
 .sec-head{margin-bottom:clamp(38px,6vw,64px);max-width:720px}
-.sec-title{font-family:var(--font-serif);font-weight:600;color:var(--ink);
+.sec-title{font-family:var(--font-display);font-weight:600;color:var(--ink);
   font-size:clamp(1.8rem,4.4vw,2.9rem);line-height:1.28;margin-top:.55em;letter-spacing:.01em}
-.sec-title em{font-family:var(--font-display);font-style:italic;color:var(--coral);font-weight:400}
+.sec-title em{font-family:var(--font-display);font-style:italic;color:var(--coral);font-weight:400;font-synthesis:none}
 
 /* ============ NAV ============ */
 header.nav{position:fixed;top:0;left:0;right:0;z-index:50;
@@ -132,19 +132,19 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .hero-eyebrow{margin-bottom:26px}
 .hero h1{font-family:var(--font-serif);font-weight:600;line-height:1.02;letter-spacing:.02em;
   font-size:clamp(3.4rem,12vw,7rem);color:var(--ink)}
-.hero h1 .en{display:block;font-family:var(--font-display);font-style:italic;font-weight:400;
-  font-size:clamp(1.1rem,3vw,1.7rem);letter-spacing:.06em;color:var(--blue-strong);margin-top:.5em}
-.hero .role{margin-top:22px;font-family:var(--font-mono);font-size:.82rem;letter-spacing:.16em;
+.hero h1 .en{display:block;font-family:var(--font-display);font-style:italic;font-weight:400;font-synthesis:none;
+  font-size:clamp(1.1rem,3vw,1.7rem);letter-spacing:.04em;color:var(--blue-strong);margin-top:.5em}
+.hero .role{margin-top:22px;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.07em;
   color:var(--muted);text-transform:uppercase}
 .hero .lede{color:var(--ink-2);max-width:46ch;font-size:1.02rem;margin:26px auto 0}
 .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;justify-content:center}
 .chip{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.05em;color:var(--blue-strong);
   border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:rgba(255,255,255,.72)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;justify-content:center}
-.btn{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;padding:13px 24px;border-radius:999px;
+.btn{font-family:var(--font-body);font-size:.92rem;font-weight:600;letter-spacing:.01em;padding:13px 26px;border-radius:999px;
   cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s,box-shadow .3s;
   display:inline-flex;align-items:center;gap:9px}
-.btn.primary{background:var(--coral);color:#fff;font-weight:500;box-shadow:0 12px 26px -12px rgba(233,103,85,.55)}
+.btn.primary{background:var(--coral);color:#fff;font-weight:600;box-shadow:0 12px 26px -12px rgba(233,103,85,.55)}
 .btn.primary:hover{transform:translateY(-3px);background:var(--coral-strong)}
 .btn.ghost{border:1px solid var(--blue);color:var(--blue-strong);background:rgba(255,255,255,.55)}
 .btn.ghost:hover{border-color:var(--blue-strong);background:var(--blue-soft);transform:translateY(-3px)}
@@ -171,17 +171,17 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 
 /* 專案卡片：問題 / 角色 / 成果 */
 .p-rows{display:flex;flex-direction:column;gap:9px;margin-top:6px;flex:1}
-.p-rows .row{display:flex;gap:10px;font-size:.86rem;line-height:1.5;color:var(--ink-2)}
+.p-rows .row{display:flex;gap:10px;font-size:.9rem;line-height:1.55;color:var(--ink-2)}
 .p-rows .row .k{flex-shrink:0;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;
   color:var(--coral);border:1px solid var(--coral-soft);background:var(--coral-soft);
   border-radius:5px;padding:3px 7px;height:fit-content;margin-top:2px}
 
 /* ============ ABOUT ============ */
-.about-quote{font-family:var(--font-display);font-style:italic;font-weight:400;
-  font-size:clamp(1.35rem,3vw,2rem);line-height:1.45;color:var(--ink);
+.about-quote{font-family:var(--font-display);font-style:italic;font-weight:400;font-synthesis:none;
+  font-size:clamp(1.35rem,3vw,2rem);line-height:1.5;color:var(--ink);
   border-left:3px solid var(--coral);padding-left:24px;margin-bottom:30px;max-width:56ch}
-.about-lead{font-family:var(--font-serif);font-size:clamp(1.1rem,2.2vw,1.42rem);line-height:1.85;
-  color:var(--ink-2);max-width:62ch;margin-bottom:48px;font-weight:400}
+.about-lead{font-family:var(--font-body);font-size:clamp(1.05rem,2.1vw,1.28rem);line-height:1.8;
+  color:var(--ink-2);max-width:64ch;margin-bottom:48px;font-weight:400}
 .about-lead b{color:var(--coral);font-weight:600}
 .traits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .trait{border:1px solid var(--line);border-radius:16px;padding:26px 24px;background:var(--surface);box-shadow:var(--shadow-sm);
@@ -191,7 +191,7 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .trait:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
 .trait:hover::after{transform:scaleY(1)}
 .trait .n{font-family:var(--font-mono);font-size:.7rem;color:var(--coral);letter-spacing:.1em}
-.trait h3{font-family:var(--font-serif);font-weight:600;font-size:1.25rem;margin:14px 0 8px;color:var(--ink)}
+.trait h3{font-family:var(--font-body);font-weight:600;font-size:1.2rem;margin:14px 0 8px;color:var(--ink)}
 .trait p{font-size:.92rem;color:var(--ink-2);line-height:1.7}
 
 /* ============ SKILL TREE ============ */
@@ -215,7 +215,7 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .branch:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
 .branch-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px;
   padding-bottom:12px;border-bottom:1px dashed var(--line)}
-.branch-head h3{font-family:var(--font-serif);font-weight:600;font-size:1.08rem;color:var(--ink)}
+.branch-head h3{font-family:var(--font-body);font-weight:600;font-size:1.05rem;color:var(--ink)}
 .branch-head .en{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
 .leaves{display:flex;flex-wrap:wrap;gap:8px}
 .leaf{font-size:.82rem;padding:6px 12px;border-radius:8px;border:1px solid var(--line);
@@ -241,7 +241,7 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .tl-date{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;color:var(--blue-strong);margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .tl-date .tag{font-size:.6rem;padding:2px 9px;border-radius:999px;background:var(--coral);color:#fff;letter-spacing:.1em;font-weight:500}
 .tl-date .tag.soft{background:transparent;border:1px solid var(--blue);color:var(--blue-strong)}
-.tl-item h3{font-family:var(--font-serif);font-weight:600;font-size:1.28rem;color:var(--ink);margin-bottom:2px}
+.tl-item h3{font-family:var(--font-body);font-weight:600;font-size:1.24rem;color:var(--ink);margin-bottom:2px}
 .tl-item .org{font-size:.92rem;color:var(--muted);margin-bottom:12px}
 .tl-item .org b{color:var(--ink-2);font-weight:500}
 .tl-item p{font-size:.94rem;color:var(--ink-2);max-width:62ch}
@@ -267,7 +267,7 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .card:hover::before{transform:scaleX(1)}
 .card .kase{font-family:var(--font-mono);font-size:.68rem;color:var(--coral);letter-spacing:.1em}
-.card h3{font-family:var(--font-serif);font-weight:600;font-size:1.25rem;color:var(--ink);margin:12px 0 8px}
+.card h3{font-family:var(--font-body);font-weight:600;font-size:1.2rem;color:var(--ink);margin:12px 0 8px}
 .card h3 a{color:inherit;display:inline-flex;align-items:center;gap:6px;transition:color .3s}
 .card h3 a:hover{color:var(--coral)}
 .card h3 a .ar{font-size:.78em;color:var(--coral)}
@@ -302,7 +302,7 @@ header.nav.scrolled{background:rgba(233,234,230,.82);backdrop-filter:blur(14px) 
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
 .vibe-body{padding:22px 22px 20px;display:flex;flex-direction:column;flex:1}
 .vibe-body .kase{font-family:var(--font-mono);font-size:.66rem;color:var(--blue-strong);letter-spacing:.1em}
-.vibe-body h3{font-family:var(--font-serif);font-weight:600;font-size:1.22rem;color:var(--ink);margin:11px 0 8px}
+.vibe-body h3{font-family:var(--font-body);font-weight:600;font-size:1.18rem;color:var(--ink);margin:11px 0 8px}
 .vibe-body p{font-size:.9rem;color:var(--ink-2);flex:1}
 .vibe-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .vibe-tags span{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);padding:3px 9px;border:1px solid var(--line);border-radius:5px}
@@ -499,6 +499,15 @@ header.nav.scrolled{border-bottom:0;box-shadow:0 8px 20px -14px var(--nm-dark)}
   padding:4px 8px;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap}
 .copy-toast.show{opacity:1;transform:translate(0,-50%)}
 @media(max-width:680px){.nav-marker{display:none}.nav-links a.active{background:var(--blue-soft)}}
+
+/* ============ STATIC TAGS = FLAT（立體陰影只留給可操作元件）============ */
+.chip{background:rgba(255,255,255,.66);border:1px solid var(--line);box-shadow:none}
+.leaf{background:var(--surface-2);border:1px solid var(--line);box-shadow:none}
+.leaf:hover{box-shadow:none;transform:none;border-color:var(--blue);color:var(--blue-strong)}
+.leaf.core{background:var(--blue-soft);border-color:transparent;box-shadow:none;color:var(--blue-strong)}
+.branch.sprout .leaf{background:var(--coral-soft);border:1px dashed var(--coral);box-shadow:none;color:var(--coral-strong)}
+.tl-tags span,.card .ptags span,.vibe-tags span{background:var(--surface-2);border:1px solid var(--line);box-shadow:none}
+.p-rows .row .k{background:var(--coral-soft);border:0;box-shadow:none;color:var(--coral)}
 </style>
 </head>
 <body>
@@ -883,7 +892,7 @@ header.nav.scrolled{border-bottom:0;box-shadow:0 8px 20px -14px var(--nm-dark)}
 const EN = {
   "nav.about":`About`,"nav.skills":`Skills`,"nav.journey":`Journey`,"nav.works":`Works`,"nav.contact":`Contact`,
   "hero.eyebrow":`Senior Software Engineer · Taipei`,
-  "hero.role":`Senior Software Engineer — Backend · System Architecture · Distributed Services`,
+  "hero.role":`Senior Software Engineer — Backend · System Architecture · Distributed&nbsp;Services`,
   "hero.lede":`A decade in software engineering has grown into a real obsession with the craft. I focus on backend systems and architecture — and I'm now heading toward machine learning and blockchain.`,
   "hero.chip1":`8–9 Years`,"hero.chip2":`Programming`,"hero.chip3":`Microservices`,"hero.chip4":`CI/CD`,
   "hero.cta1":`View Projects`,"hero.cta2":`Get in Touch`,
